@@ -7,19 +7,16 @@ export default function Navbar() {
         <span className="word">NickDev</span>
       </a>
 
-      <nav className="nav">
-        <a className="link-underline" href="#cursos">
-          Cursos
-        </a>
-        <a className="link-underline" href="#artigos">
-          Artigos
-        </a>
+      <nav className="nav">        
         <a className="link-underline" href="#sobre">
           Sobre
         </a>
-        <a className="glow-btn" href="#newsletter">
-          Newsletter
+        <a className="link-underline" href="#cursos">
+          Cursos
         </a>
+        {/* <a className="glow-btn" href="#newsletter">
+          Newsletter
+        </a> */}
       </nav>
     </header>
   );

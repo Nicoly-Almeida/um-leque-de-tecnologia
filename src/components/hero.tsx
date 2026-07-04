@@ -21,15 +21,6 @@ export default function Hero() {
           uma lâmina de cada vez.
         </p>
 
-        <div className="actions">
-          <a className="glow-btn" href="#newsletter">
-            Receber a newsletter
-          </a>
-          <a className="ghost-btn" href="#sobre">
-            Sobre mim
-          </a>
-        </div>
-
         <div className="stats">
           <div>
             <div className="num">+1000</div>

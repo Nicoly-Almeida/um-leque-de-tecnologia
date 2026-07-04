@@ -23,14 +23,14 @@ export default function About() {
           Hoje continuo estudando e compartilhando conhecimento como mestranda em Tecnologia da Informação, professora de pós-graduação, palestrante, organizadora do Google Developer Groups João Pessoa e vice-presidente do Mulher Tech Sim Senhor, acreditando que tecnologia também é comunidade, troca de conhecimento e impacto nas pessoas.
         </p>
 
-        <div className="chips">
+        {/* <div className="chips">
           <span className="chip">Python</span>
           <span className="chip">JavaScript</span>
           <span className="chip">Ciência de Dados</span>
           <span className="chip">Ensino</span>
           <span className="chip">Código Aberto</span>
           <span className="chip">IA Aplicada</span>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 // URL do deploy do repositório de materiais (repo "nickdeve-aulas").
 // Troque pela URL real ao publicar — ex.: um subdomínio "https://aulas.seudominio.com".
-const AULAS_BASE = "https://aulas.exemplo.com";
+const AULAS_BASE = "https://aulas.umlequedetecnologia.com.br";
 
 const Arrow = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
