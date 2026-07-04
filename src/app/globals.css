@@ -1,0 +1,386 @@
+/* ==========================================================================
+   NickDev — "Um leque de tecnologia"
+   Tokens, animações e estilos das seções. Valores fiéis ao handoff (hifi).
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@1,400&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* tipografia */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* superfícies */
+  --bg: #08070E;
+  --surface: #100D1B;
+
+  /* gradiente da marca */
+  --magenta: #F24487;
+  --pink: #E73982;
+  --purple: #7B4FD0;
+  --purple-2: #5341B8;
+
+  /* acentos claros */
+  --pink-light: #E88BB8;
+  --purple-light: #A98CE0;
+  --tagline: #C77DB0;
+
+  /* texto */
+  --text: #F3F0FA;
+  --text-2: #B4AEC6;
+  --text-3: #8B84A0;
+  --text-4: #7B7392;
+  --text-5: #5E5876;
+
+  /* bordas */
+  --line: rgba(255, 255, 255, 0.09);
+  --line-soft: rgba(255, 255, 255, 0.07);
+  --line-strong: rgba(255, 255, 255, 0.14);
+
+  /* gradientes */
+  --grad: linear-gradient(100deg, #F24487, #7B4FD0);
+  --grad-text: linear-gradient(100deg, #F24487 10%, #E73982 45%, #7B4FD0 90%);
+
+  /* espaçamento fluido */
+  --pad-x: clamp(20px, 5vw, 64px);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-display), system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--purple-light); outline-offset: 3px; border-radius: 4px; }
+
+/* utilitários -------------------------------------------------------------- */
+.mono { font-family: var(--font-mono), monospace; }
+.grad-text {
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* brilhos ambientes fixos -------------------------------------------------- */
+.ambient { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.ambient .glow { position: absolute; border-radius: 50%; }
+.ambient .glow.magenta {
+  width: 60vw; height: 60vw; top: -18vw; right: -14vw;
+  background: radial-gradient(circle, rgba(231, 57, 130, 0.16), transparent 62%);
+}
+.ambient .glow.purple {
+  width: 62vw; height: 62vw; bottom: -22vw; left: -16vw;
+  background: radial-gradient(circle, rgba(123, 79, 208, 0.22), transparent 62%);
+}
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+.navbar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px var(--pad-x);
+  background: rgba(8, 7, 14, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.navbar .brand { display: flex; align-items: center; gap: 13px; }
+.navbar .brand img { height: 40px; width: auto; display: block; }
+.navbar .brand .word { font-weight: 700; font-size: 19px; letter-spacing: -0.01em; }
+.navbar .nav { display: flex; align-items: center; gap: clamp(18px, 3vw, 30px); }
+
+/* link com sublinhado gradiente animado */
+.link-underline {
+  position: relative; font-size: 14.5px; font-weight: 500; color: #C9C3DA; padding: 2px 0;
+}
+.link-underline::after {
+  content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 1.5px;
+  background: var(--grad); transition: width 0.28s ease;
+}
+.link-underline:hover::after { width: 100%; }
+
+/* botão pill com gradiente */
+.glow-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 600; color: #fff;
+  background: var(--grad); padding: 10px 18px; border: 0; border-radius: 100px;
+  cursor: pointer; transition: transform 0.25s ease, box-shadow 0.3s ease;
+}
+.glow-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px -12px rgba(231, 57, 130, 0.65);
+}
+
+/* botão ghost */
+.ghost-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 600; color: var(--text);
+  background: transparent; padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 100px;
+  cursor: pointer; transition: border-color 0.25s ease, background 0.25s ease;
+}
+.ghost-btn:hover {
+  border-color: rgba(123, 79, 208, 0.7);
+  background: rgba(123, 79, 208, 0.1);
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+  display: grid; grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(32px, 5vw, 64px); align-items: center;
+  padding: clamp(56px, 9vw, 120px) var(--pad-x) clamp(52px, 7vw, 96px);
+  max-width: 1240px; margin: 0 auto;
+}
+.hero .eyebrow {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--font-mono), monospace; font-size: 12px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--pink-light);
+  border: 1px solid rgba(231, 57, 130, 0.3); background: rgba(231, 57, 130, 0.06);
+  border-radius: 100px; padding: 7px 14px;
+}
+.hero .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--grad); }
+
+.hero h1 {
+  font-weight: 700; font-size: clamp(38px, 6.2vw, 76px);
+  line-height: 1.03; letter-spacing: -0.03em; margin: 22px 0 0;
+}
+.hero h1 .serif { font-family: var(--font-serif), Georgia, serif; font-style: italic; font-weight: 400; }
+
+.hero .lead {
+  font-size: clamp(16px, 1.6vw, 20px); line-height: 1.6; color: var(--text-2);
+  max-width: 52ch; margin-top: 22px;
+}
+
+.hero .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+
+.hero .stats {
+  display: flex; flex-wrap: wrap; gap: clamp(24px, 4vw, 48px);
+  border-top: 1px solid var(--line); margin-top: 40px; padding-top: 26px;
+}
+.hero .stats .num { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+.hero .stats .label {
+  font-family: var(--font-mono), monospace; font-size: 12.5px; color: var(--text-3); margin-top: 6px;
+}
+
+/* coluna da logo animada */
+.herostage { position: relative; display: flex; align-items: center; justify-content: center; }
+.herostage .glow {
+  position: absolute; inset: 0; margin: auto; width: 84%; height: 80%;
+  background: radial-gradient(circle, rgba(231, 57, 130, 0.32), transparent 60%);
+  filter: blur(24px); pointer-events: none;
+  animation: glowpulse 6s ease-in-out infinite;
+}
+.herologo {
+  position: relative; width: min(46vw, 450px); height: auto; display: block;
+  filter: drop-shadow(0 24px 60px rgba(231, 57, 130, 0.45));
+  animation: floaty 6s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   SOBRE
+   ========================================================================== */
+.about {
+  display: grid; grid-template-columns: 0.82fr 1.18fr;
+  gap: clamp(32px, 6vw, 72px); align-items: center;
+  padding: clamp(56px, 7vw, 100px) var(--pad-x);
+  max-width: 1240px; margin: 0 auto;
+}
+.about .photo {
+  aspect-ratio: 4 / 5; border-radius: 22px; border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--surface); position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.about .photo::before {
+  content: ""; position: absolute; inset: -20%;
+  background: radial-gradient(circle at 50% 40%, rgba(123, 79, 208, 0.25), transparent 60%);
+  pointer-events: none;
+}
+.about .photo .ph {
+  position: relative; z-index: 1; text-align: center;
+  font-family: var(--font-mono), monospace; font-size: 13px; color: var(--text-4);
+  border: 1px dashed rgba(255, 255, 255, 0.16); border-radius: 12px;
+  padding: 26px 22px; max-width: 78%;
+}
+.about .photo .ph span { display: block; color: var(--pink-light); font-size: 22px; margin-bottom: 8px; }
+.about .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.about .eyebrow {
+  font-family: var(--font-mono), monospace; font-size: 12.5px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--pink-light);
+}
+.about h2 {
+  font-weight: 700; font-size: clamp(28px, 4.2vw, 48px); letter-spacing: -0.025em;
+  line-height: 1.05; margin: 12px 0 0;
+}
+.about .bio { font-size: 17px; line-height: 1.68; color: var(--text-2); max-width: 58ch; margin-top: 18px; }
+
+.about .info {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px; margin-top: 30px;
+}
+.about .info .card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: 15px 17px; display: flex; flex-direction: column; gap: 8px;
+}
+.about .info .card .top { display: flex; align-items: center; gap: 8px; }
+.about .info .card .label {
+  font-family: var(--font-mono), monospace; font-size: 11px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--text-3);
+}
+.about .info .card .value { font-size: 15px; font-weight: 600; }
+
+.about .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+.about .chips .chip {
+  font-family: var(--font-mono), monospace; font-size: 12.5px; color: var(--text-2);
+  border: 1px solid var(--line-strong); border-radius: 100px; padding: 7px 14px;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 24px; border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: clamp(36px, 5vw, 56px) var(--pad-x) 40px;
+  max-width: 1240px; margin: 0 auto;
+}
+.footer .brand { display: flex; align-items: center; gap: 12px; }
+.footer .brand img { height: 34px; width: auto; }
+.footer .brand .word { font-weight: 700; font-size: 15px; }
+.footer .brand .tag { font-family: var(--font-mono), monospace; font-size: 12.5px; color: var(--text-4); }
+.footer .social { display: flex; flex-wrap: wrap; gap: clamp(16px, 2.5vw, 26px); }
+.footer .social a {
+  position: relative; display: inline-flex; align-items: center; gap: 7px;
+  font-size: 13.5px; color: #9A93AE; padding-bottom: 2px;
+}
+.footer .social a::after {
+  content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1.5px;
+  background: var(--grad); transition: width 0.28s ease;
+}
+.footer .social a:hover::after { width: 100%; }
+.footer .copy {
+  flex-basis: 100%; font-family: var(--font-mono), monospace; font-size: 12px;
+  color: var(--text-5); border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 8px; padding-top: 20px;
+}
+
+/* ==========================================================================
+   BLOCOS: CURSOS & ARTIGOS  (extrapolados do sistema do handoff)
+   ========================================================================== */
+.block { max-width: 1240px; margin: 0 auto; padding: clamp(48px, 7vw, 96px) var(--pad-x); }
+.block .head { margin-bottom: clamp(28px, 4vw, 48px); }
+.block .eyebrow {
+  font-family: var(--font-mono), monospace; font-size: 12.5px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--pink-light);
+}
+.block h2 {
+  font-weight: 700; font-size: clamp(28px, 4.2vw, 48px); letter-spacing: -0.025em;
+  line-height: 1.05; margin: 12px 0 0;
+}
+.block .lead {
+  font-size: clamp(16px, 1.6vw, 19px); color: var(--text-2); max-width: 56ch; margin-top: 16px;
+}
+
+/* grade de cursos */
+.courses {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px;
+}
+.course {
+  display: flex; flex-direction: column; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 18px; padding: 26px;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.course:hover { transform: translateY(-4px); border-color: var(--purple); }
+.course .num { font-family: var(--font-mono), monospace; font-size: 13px; color: var(--pink-light); }
+.course h3 { font-size: clamp(19px, 2.2vw, 23px); font-weight: 600; margin: 8px 0; letter-spacing: -0.01em; }
+.course p { font-size: 15px; color: var(--text-2); line-height: 1.6; }
+.course .meta { font-family: var(--font-mono), monospace; font-size: 12px; color: var(--text-3); margin-top: 6px; }
+.course .go {
+  margin-top: auto; padding-top: 18px; display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 600; color: var(--pink-light);
+}
+.course .go svg { transition: transform 0.2s ease; }
+.course:hover .go svg { transform: translateX(3px); }
+.course.soon { opacity: 0.55; }
+.course.soon:hover { transform: none; border-color: var(--line); }
+.course.soon .go { color: var(--text-3); }
+
+/* grade de artigos */
+.articles {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px;
+}
+.article {
+  display: block; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 16px; padding: 22px 24px;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.article:hover { transform: translateY(-3px); border-color: var(--purple); }
+.article .tag {
+  font-family: var(--font-mono), monospace; font-size: 11.5px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--purple-light);
+}
+.article h3 { font-size: clamp(17px, 2vw, 20px); font-weight: 600; margin: 10px 0 8px; line-height: 1.28; }
+.article p { font-size: 14.5px; color: var(--text-2); line-height: 1.55; }
+.article .date { font-family: var(--font-mono), monospace; font-size: 12px; color: var(--text-3); margin-top: 14px; }
+
+/* ==========================================================================
+   ANIMAÇÕES
+   ========================================================================== */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes glowpulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.07); }
+}
+/* leque de mão: cada asa (.fanblade) gira em torno do eixo (540/755). As asas da
+   esquerda (phi <= -40°) são a haste FIXA (--r = 0, não se mexem); as demais dobram
+   p/ cima-esquerda até ~-40°, acima do wordmark p/ não cobri-lo (nenhuma asa desce
+   abaixo da sua posição aberta). Aberto = rotate(0). Como o giro cresce da esquerda
+   p/ a direita, o leque ABRE varrendo esquerda->direita e FECHA voltando p/ a
+   esquerda. O símbolo </> não entra em .fanblade -> fica estático. */
+@keyframes fanfold {
+  0%, 40%  { transform: rotate(0deg); }             /* aberto (repouso) */
+  70%      { transform: rotate(var(--r, 0deg)); }   /* fechado (dobrado à esquerda) */
+  100%     { transform: rotate(0deg); }             /* reabre esquerda -> direita */
+}
+.fanblade { animation: fanfold 6s cubic-bezier(0.45, 0, 0.25, 1) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .herologo, .herostage .glow, .fanblade { animation: none !important; }
+}
+
+/* ==========================================================================
+   RESPONSIVO — grids de 2 colunas empilham
+   ========================================================================== */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; gap: clamp(28px, 8vw, 48px); }
+  .herostage { order: -1; }
+  .herologo { width: min(64vw, 340px); }
+  .about { grid-template-columns: 1fr; }
+  .about .photo { max-width: 420px; }
+}
+@media (max-width: 640px) {
+  .navbar .nav .link-underline { display: none; }
+}
+@media (max-width: 560px) {
+  .navbar .brand .word { display: none; }
+  .footer { flex-direction: column; align-items: flex-start; }
+}
