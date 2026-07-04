@@ -32,15 +32,15 @@ export default function Hero() {
 
         <div className="stats">
           <div>
-            <div className="num">40+</div>
-            <div className="label">artigos</div>
+            <div className="num">+1000</div>
+            <div className="label">alunos vivendo a TI</div>
           </div>
           <div>
-            <div className="num">12</div>
-            <div className="label">cursos &amp; oficinas</div>
+            <div className="num">7</div>
+            <div className="label">anos de experiência</div>
           </div>
           <div>
-            <div className="num">6</div>
+            <div className="num">4</div>
             <div className="label">anos ensinando</div>
           </div>
         </div>

@@ -14,19 +14,18 @@ export default function About() {
       <div className="about-text">
         <div className="eyebrow">01 — Sobre</div>
         <h2>
-          Oi, eu sou o <span className="grad-text">NickDev</span>.
+          Hey, eu sou a <span className="grad-text">NickDev</span>.
         </h2>
 
         {/* Bio — conteúdo placeholder, substituir pelo texto real. */}
         <p className="bio">
-          Aqui reúno o que escrevo e o que ensino: materiais livres, artigos sem
-          pressa e experimentos que viram aula. Cada trilha do leque leva a um
-          lugar novo.
+          Minha jornada na tecnologia começou aos 14 anos, quando me apaixonei por programação e dados. Desde então, transformei a curiosidade por tecnologia em uma carreira construída entre engenharia de software, experiência do usuário e educação.
         </p>
         <p className="bio">
-          Trabalho na fronteira entre desenvolvimento, dados e educação —
-          traduzindo ideias densas em coisas que dá pra construir e entender.
-          Este é o meu espaço pra compartilhar isso em aberto.
+          Ao longo dos anos tive a oportunidade de atuar em empresas como Picpay, Serasa Experian, Santander, dentre outras, desenvolvendo soluções para os setores financeiro, imobiliário e de tecnologia. Trabalhei principalmente com aplicações web de grande escala, arquitetura frontend e experiências digitais voltadas para milhões de usuários.
+        </p>
+        <p className="bio">
+          Hoje continuo estudando e compartilhando conhecimento como mestranda em Tecnologia da Informação, professora de pós-graduação, palestrante, organizadora do Google Developer Groups João Pessoa e vice-presidente do Mulher Tech Sim Senhor, acreditando que tecnologia também é comunidade, troca de conhecimento e impacto nas pessoas.
         </p>
 
         <div className="info">

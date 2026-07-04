@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Um leque de tecnologia",
   description:
     "Site pessoal do NickDev: artigos, materiais de aula e experimentos sobre desenvolvimento, dados e educação em tecnologia.",
+  icons: {
+    icon: "/favicon.svg",
+  },
   openGraph: {
     title: "Um leque de tecnologia",
     description:
