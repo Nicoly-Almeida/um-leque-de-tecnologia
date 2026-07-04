@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "NickDev — Um leque de tecnologia",
+  title: "Um leque de tecnologia",
   description:
     "Site pessoal do NickDev: artigos, materiais de aula e experimentos sobre desenvolvimento, dados e educação em tecnologia.",
   openGraph: {
-    title: "NickDev — Um leque de tecnologia",
+    title: "Um leque de tecnologia",
     description:
       "Artigos, materiais de aula e experimentos sobre desenvolvimento, dados e educação em tecnologia.",
     type: "website",
